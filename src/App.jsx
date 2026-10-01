@@ -2,22 +2,25 @@ import './App.css'
 import { useState } from 'react'
 
 function App() {
-  return (
-    <div>
-      <Counter/>
-      <Counter/>
-    </div>
-  )
-}
-
-function Counter() {
   const [count, setCount] = useState(0)
 
   return (
     <div>
-      <h1>Counter: {count}</h1>
+      <Counter
+      count = {count}
+      onIncrement = {() => setCount(prev => prev + 1)} 
+      />
+    </div>
+  )
+}
+
+function Counter({count,onIncrement}) {
+
+  return (
+    <div>
+      <h1>Counter: {props.count}</h1>
       <button 
-        onClick={ () => setCount( prev => prev + 1 ) }>
+        onClick={ props.onIncrement }>
           증가
       </button>
     </div>
